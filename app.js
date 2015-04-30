@@ -22,6 +22,12 @@ tictactoe.controller("TicTacToeCtrl", function TicTacToeCtrl($scope){
 
     $scope.move= function(cell){
         cell.value = $scope.currentPlayer;
+        if ($scope.currentPlayer === "x"){
+            $scope.currentPlayer = "o";
+        }
+        else {
+            $scope.currentPlayer = "x";
+        }
     };
 
 });
