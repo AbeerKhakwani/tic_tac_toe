@@ -15,7 +15,6 @@ tictactoe.controller("TicTacToeCtrl", function TicTacToeCtrl($scope){
             });
             $scope.currentPlayer="x";
             $scope.winner="No Winner";
-            console.log($scope.winner);
         });
     };
     $scope.reset();
@@ -23,27 +22,69 @@ tictactoe.controller("TicTacToeCtrl", function TicTacToeCtrl($scope){
 
     }
 
-    var checkRow = function(){
-        var current = false;
-        for (var i = 0; i< $scope.board.length; i++){
-                for (var x = 0; x < $scope.board[i].length; x++){
-                    console.log($scope.board[i][x].value);
-                if($scope.board[i][0].value === $scope.board[i][1].value
-                    && $scope.board[i][0].value === $scope.board[i][2].value
-                    && $scope.board[i][0].value !== '-')
-                    {
-                     current = true;
-
+    var checkRow = function() {
+            var current = false;
+            for (var i = 0; i < $scope.board.length; i++) {
+                for (var x = 0; x < $scope.board[i].length; x++) {
+                    // console.log($scope.board[i][x].value);
+                    if ($scope.board[i][0].value === $scope.board[i][1].value
+                        && $scope.board[i][0].value === $scope.board[i][2].value
+                        && $scope.board[i][0].value !== '-') {
+                        current = true;
                     }
+
+                }
             }
-        }
-        return current;
-    };
+            return current;
+        };
+        var checkColumn = function()
+        {
+                var current = false;
+                var i = 0;
+                for (var x = 0; x < $scope.board[i].length - 1; x++)
+                {
+                    // console.log($scope.board[i][x].value);
+                    if ($scope.board[i][x].value === $scope.board[i + 1][x].value
+                        && $scope.board[i][x].value === $scope.board[i + 2][x].value
+                        && $scope.board[i][x].value !== '-')
+                        {
+                            current = true;
+                        }
+                }
+                return current;
+            };
+
+        var checkDiagnal = function()
+        {
+            var current = false;
+
+                if ($scope.board[0][0].value === $scope.board[1][1].value
+                    && $scope.board[0][0].value === $scope.board[2][2].value
+                    && $scope.board[0][0].value !== '-')
+                    {
+                        current = true;
+                        console.log(current+"incheckdiagonal");
+                    }
+                else if($scope.board[0][2].value === $scope.board[1][1].value
+                    && $scope.board[0][2].value === $scope.board[2][0].value
+                && $scope.board[0][2].value !== '-')
+                {
+                current = true;
+                }
+
+            return current;
+        };
+
+        $scope.isTaken = function(cell){
+            return cell.value !== '-';
+        };
+
+
 
     $scope.move= function(cell){
         cell.value = $scope.currentPlayer;
-
-         if(checkRow() == false ){
+        //checkRow() == false &&
+         if(checkColumn() == false && checkRow() == false && checkDiagnal() == false ){
                 if ($scope.currentPlayer === "x"){
                     $scope.currentPlayer = "o";
                 }
