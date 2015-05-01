@@ -2,9 +2,10 @@ tictactoe.controller("TicTacToeCtrl", function TicTacToeCtrl($scope){
 
     $scope.board = [
         [{value: '-'}, { value: '-'}, { value: '-'}],
-        [{value: '-'}, { value: 'X'}, { value: '-'}],
+        [{value: '-'}, { value: '-'}, { value: '-'}],
         [{value: '-'}, { value: '-'}, { value: '-'}]
     ];
+
 
     $scope.reset = function(){
       angular.forEach($scope.board, function(value,key){
@@ -12,6 +13,7 @@ tictactoe.controller("TicTacToeCtrl", function TicTacToeCtrl($scope){
                        cell.value='-';
             });
             $scope.currentPlayer="X";
+            $scope.message="New Game";
 
         });
     };

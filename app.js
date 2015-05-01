@@ -9,6 +9,19 @@ tictactoe.config(function($stateProvider){
 })
 
 tictactoe.directive("gameOver", function(){
-    return function(scope,element){
+    return {
+        restrict: 'A',
+        scope: {
+            'isTrue': '='
+        },
+        link: function (scope, element, attrs) {
+            scope.$watch('isTrue', function(isTrue){
+                if(isTrue){
+                    element.addClass('btn btn-info');
+                }
+
+            });
+        }
+    }
 
 });
