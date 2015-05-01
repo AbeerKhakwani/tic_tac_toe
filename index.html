@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="tictactoe">
+
 <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="lib/angular.min.js"></script>
@@ -9,24 +10,43 @@
     <script src="TicTacToeController.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <div class="container" ng-controller="TicTacToeCtrl">
-        <h3>Let's Play Tic-Tac-Toe</h3>
+        <center>
+            <h3>Let's Play Tic-Tac-Toe</h3>
+        </center>
         <div class="col-md-6">
 
         </div>
         <center>
             <div class="col-md-12">
                 <!-- <div class="well"> -->
-                 <div><button class="btn btn-danger"   ng-repeat="cell in board[0]"  ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button></div>
-                 <div><button class="btn btn-info"     ng-repeat="cell in board[1]"  ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button></div>
-                 <div><button class="btn btn-success"  ng-repeat="cell in board[2]"  ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button></div>
-             </div>
-             <div class="col-md-6">
-                    <button reset  class="btn btn-warning hidden" ng-click="reset()">reset</button>
-             </div>
-             <div ui-view></div>
-            <!-- </div> -->
+                <div class="gameboard">
+                    <div>
+                        <button class="btn btn-danger" ng-repeat="cell in board[0]" ng-disabled="isTaken(cell);" ng-click="move(cell)" ng-model="current"> {{ cell.value }}</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-info"   ng-repeat="cell in board[1]" ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-success" ng-repeat="cell in board[2]" ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button>
+                    </div>
+                </div>
+                <br/>
+                <button class="btn btn-warning" ng-click="reset()">reset</button>
+            </div>
+        </center>
+        <center>
+
+        </center>
+        <center>
+            <div class="col-md-12 jumbotron">
+                <p>CurrentPlayer: {{ currentPlayer }}</p>
+                <div ui-view></div>
+            </div>
+        </center>
+        <!-- </div> -->
         </center>
     </div>
 </body>

@@ -8,10 +8,7 @@ tictactoe.config(function($stateProvider){
     });
 })
 
-tictactoe.directive("reset", function(){
+tictactoe.directive("gameOver", function(){
     return function(scope,element){
-            element.bind("click",function(){
-             removeClass("hidden");
-         })
-    }
+
 });
