@@ -22,17 +22,19 @@
         <center>
             <div class="col-md-12">
                 <!-- <div class="well"> -->
-                <div class="gameboard" >
-                    <div>
-                        <button class="btn btn-danger" gameOver isTrue="current" ng-repeat="cell in board[0]" ng-disabled="isTaken(cell);" ng-click="move(cell)" > {{ cell.value }}</button>
-                    </div>
-                    <div>
-                        <button class="btn btn-info"   gameOver isTrue="current" ng-repeat="cell in board[1]" ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button>
-                    </div>
-                    <div>
-                        <button class="btn btn-success" gameOver isTrue="current"  ng-repeat="cell in board[2]" ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button>
-                    </div>
+                <div class="gameboard" ng-hide="!current">
+                     <h1>x</h1>
                 </div>
+                    <div>
+                        <button class="btn btn-danger" ng-repeat="cell in board[0]" ng-disabled="isTaken(cell);" ng-click="move(cell)" > {{ cell.value }}</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-info"   ng-repeat="cell in board[1]" ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-success"  ng-repeat="cell in board[2]" ng-disabled="isTaken(cell);" ng-click="move(cell)"> {{ cell.value }}</button>
+                    </div>
+                
                 <br/>
                 <button class="btn btn-warning" ng-click="reset()">reset</button>
             </div>

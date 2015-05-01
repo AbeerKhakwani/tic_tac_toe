@@ -14,6 +14,7 @@ tictactoe.controller("TicTacToeCtrl", function TicTacToeCtrl($scope){
             });
             $scope.currentPlayer="X";
             $scope.message="New Game";
+            $scope.current=false;
 
         });
     };

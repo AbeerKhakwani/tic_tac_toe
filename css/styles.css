@@ -1,3 +1,16 @@
 .hidden {
     display: none;
 }
+.gameboard{
+	position: absolute;
+	background-color:rgba(142, 82, 239, .2);
+    height:100px;
+    width: 100px;
+    z-index: 10;
+    left:520px;
+
+}
+h1{
+	font-size: 60px;
+}
+
